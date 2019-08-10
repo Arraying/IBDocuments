@@ -1,0 +1,93 @@
+Options +Indexes
+
+# RewriteEngine on  
+# RewriteCond %{HTTP_HOST} !^www\.
+# RewriteRule ^(.*)$ http://%{HTTP_HOST}/$1 [R=301,L]
+
+<IfModule mod_autoindex.c>
+
+  # Ignore listing of the listing directory
+  IndexIgnore "directory-listing"
+
+  # Indexing options
+  IndexOptions +AddAltClass +Charset=UTF-8 +FancyIndexing +FoldersFirst +HTMLTable
+  IndexOptions +IgnoreCase +NameWidth=* +SuppressRules +SuppressDescription +IconsAreLinks
+  IndexOptions +SuppressHTMLPreamble
+
+  # Some meta tags to add to the head tag
+  IndexHeadInsert "<meta name='viewport' content='width=device-width, initial-scale=1'><meta http-equiv='X-UA-Compatible' content='IE=edge'>"
+
+  HeaderName /directory-listing/header.html
+  ReadmeName /directory-listing/footer.html
+  IndexStyleSheet "/directory-listing/table.css"
+
+  # Registering icons
+  # Default icon
+  DefaultIcon "/directory-listing/icons/unknown.svg"
+
+  # Some generic icons
+  AddIcon "/directory-listing/icons/blank.svg" ^^BLANKICON^^
+  AddIcon "/directory-listing/icons/folder.svg" ^^DIRECTORY^^
+  AddIcon "/directory-listing/icons/folder-home.svg" ..
+
+  # Extension specific icons
+  AddIcon "/directory-listing/icons/archive.svg" .zip .7z .bz2 .cab .gz .tar .rar
+  AddIcon "/directory-listing/icons/audio.svg" .aac .aif .aifc .aiff .ape .au .flac .iff .m4a .mid .mp3 .mpa .ra .wav .wma .f4a .f4b .oga .ogg .xm .it .s3m .mod
+  AddIcon "/directory-listing/icons/bin.svg" .bin .hex
+  AddIcon "/directory-listing/icons/code.svg" .xml
+  AddIcon "/directory-listing/icons/doc.svg" .doc .docx .docm .dot .dotx .dotm .log .msg .odt .pages .rtf .tex .wpd .wps
+  AddIcon "/directory-listing/icons/img.svg" .bmp .png .tiff .tif .gif .jpg .jpeg .jpe .psd .ai .ico .webp
+  AddIcon "/directory-listing/icons/spreadsheet.svg" .xlsx .xlsm .xltx .xltm .xlam .xlr .xls .csv
+  AddIcon "/directory-listing/icons/presentation.svg" .ppt .pptx .pot .potx .pptm .potm .xps
+  AddIcon "/directory-listing/icons/c++.svg" .cpp
+  AddIcon "/directory-listing/icons/c.svg" .c
+  AddIcon "/directory-listing/icons/css3.svg" .css .sass .scss .less
+  AddIcon "/directory-listing/icons/font.svg" .ttf .TTF .woff .WOFF .woff2 .WOFF2 .otf .OTF
+  AddIcon "/directory-listing/icons/h.svg" .h
+  AddIcon "/directory-listing/icons/html5.svg" .html .xhtml .shtml .htm .URL .url
+  AddIcon "/directory-listing/icons/info.svg" .nfo .info
+  AddIcon "/directory-listing/icons/iso.svg" .iso .img
+  AddIcon "/directory-listing/icons/java.svg" .jar .java
+  AddIcon "/directory-listing/icons/js.svg" .js .json
+  AddIcon "/directory-listing/icons/markdown.svg" .md
+  AddIcon "/directory-listing/icons/package.svg" .pkg .dmg .rpm .deb
+  AddIcon "/directory-listing/icons/pdf.svg" .pdf
+  AddIcon "/directory-listing/icons/php.svg" .php .phtml
+  AddIcon "/directory-listing/icons/py.svg" .py
+  AddIcon "/directory-listing/icons/rb.svg" .rb
+  AddIcon "/directory-listing/icons/script.svg" .bat .BAT .cmd .sh .ps .exe .EXE .msi .MSI
+  AddIcon "/directory-listing/icons/sql.svg" .sql
+  AddIcon "/directory-listing/icons/text.svg" .txt .cnf .conf .map .yaml
+  AddIcon "/directory-listing/icons/vector.svg" .svg .svgz
+  AddIcon "/directory-listing/icons/video.svg" .asf .asx .avi .flv .mkv .mov .mp4 .mpg .rm .srt .swf .vob .wmv .m4v .f4v .f4p .ogv .webm
+
+  # Icons based on their type
+  AddIconByType (TXT,/directory-listing/icons/text.svg) text/*
+  AddIconByType (IMG,/directory-listing/icons/img.svg) image/*
+  AddIconByType (SND,/directory-listing/icons/audio.svg) audio/*
+  AddIconByType (VID,/directory-listing/icons/video.svg) video/*
+
+ExpiresActive On
+
+  # Images
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # Video
+  ExpiresByType video/mp4 "access plus 1 year"
+  ExpiresByType video/mpeg "access plus 1 year"
+
+  # CSS, JavaScript
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+
+  # Others
+  ExpiresByType application/pdf "access plus 1 month"
+  ExpiresByType application/x-shockwave-flash "access plus 1 month"
+
+</IfModule>

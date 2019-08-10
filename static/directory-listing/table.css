@@ -1,0 +1,78 @@
+@import 'common.css';
+
+table {
+  text-align: left;
+  white-space: nowrap;
+  width: 90%;
+  border-collapse: collapse;
+  margin-right: auto;
+  margin-left:auto;
+}
+
+table tr {
+  border-bottom: 1px solid rgba(0,0,0,0.075);
+}
+
+table tr:hover {
+  background-color: transparent;
+}
+
+table tr.indexhead {
+  border-bottom-color: rgba(0,0,0,0.1);
+}
+
+table tr .indexcolname {
+  width: 90%;
+}
+
+table tr.indexhead,
+table tr.indexhead:hover {
+  background-color: transparent;
+}
+
+table tr.indexhead a {
+  font-weight: normal;
+  font-size: 15px;
+  color: grey;
+}
+
+table tr .indexcolname a,
+table tr .indexcollastmod a,
+table tr .indexcolsize a {
+  border-bottom: 1px solid transparent;
+}
+
+table tr .indexcolname a:hover,
+table tr .indexcollastmod a:hover,
+table tr .indexcolsize a:hover {
+  border-bottom: 1px solid currentColor;
+}
+
+table tr.even-parentdir a {
+  font-weight: 600;
+  font-family: roboto;
+}
+
+table tr .indexcollastmod,
+table tr .indexcolsize {
+  padding: 10px 50px;
+  font-size: 15px;
+  font-family: roboto;
+}
+
+table th,
+table td {
+  padding: 7px;
+}
+
+table tr .indexcolsize {
+  text-align: right;
+}
+
+table tr .indexcolicon a {
+  border: none;
+}
+
+table tr .indexcolicon img {
+  width: 35px;
+}
